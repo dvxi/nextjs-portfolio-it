@@ -9,6 +9,7 @@ type Props = {
 		title: string;
 		description: string;
 		repository?: string;
+		figma?: string;
 	};
 
 	views: number;
@@ -29,6 +30,12 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 			label: "Website",
 			href: project.url,
 		});
+	}
+	if(project.figma) {
+		links.push({
+			label: "Figma",
+			href: project.figma,
+		})
 	}
 	useEffect(() => {
 		if (!ref.current) return;
