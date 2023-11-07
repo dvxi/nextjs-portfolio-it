@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 		default: "szymongwozdz.com",
 		template: "%s | szymongwozdz.com",
 	},
-	description: "Web developer and designer at Sublima Media. Founder of Drawly",
+	description: "All you need in terms of your digital service. Web applications designer and developer.",
 	openGraph: {
 		title: "szymongwozdz.com",
 		description:
-			"Web developer and deisgner at Sublima Media. Founder of Drawly",
+			"All you need in terms of your digital service. Web applications designer and developer.",
 		url: "https://szymongwozdz.com",
 		siteName: "szymongwozdz.com",
 		images: [

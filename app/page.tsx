@@ -35,16 +35,9 @@ export default function Home() {
 			<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
 			<div className="my-16 text-center animate-fade-in">
 				<h2 className="text-sm text-zinc-500 ">
-					Hi, my name is Szymon, I'm a car enthusiast building web and mobile apps
+					Hi, my name is Szymon, I'm a car enthusiast building web and mobile applications.
 					<br />
-					while also running a marketing agency {" "}
-					<Link
-						target="_blank"
-						href="https://sublima.media"
-						className="underline duration-500 hover:text-zinc-300"
-					>
-						Sublima Media
-					</Link>
+					Currently working on a PocketQube satellite scheduled to be onboard the Falcon 9 Transporter mission in June 2024.
 				</h2>
 			</div>
 		</div>

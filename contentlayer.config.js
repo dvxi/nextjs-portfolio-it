@@ -44,6 +44,9 @@ export const Project = defineDocumentType(() => ({
 		},
 		figma: {
 			type: "string",
+		},
+		cType: {
+			type: "string"
 		}
 	},
 	computedFields,
