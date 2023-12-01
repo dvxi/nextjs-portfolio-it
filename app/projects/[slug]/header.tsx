@@ -10,7 +10,7 @@ type Props = {
 		description: string;
 		repository?: string;
 		figma?: string;
-		cType: string;
+		cType?: string;
 	};
 
 	views: number;
