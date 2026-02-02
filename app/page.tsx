@@ -35,9 +35,9 @@ export default function Home() {
 			<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
 			<div className="my-16 text-center animate-fade-in">
 				<h2 className="text-sm text-zinc-500 ">
-					Hi, my name is Szymon, I'm a car enthusiast building web and mobile applications.
+					Building AI products for companies up to 600M+ EUR ARR · CERN Alumni · LLM Researcher.
 					<br />
-					Currently working on a PocketQube satellite scheduled to be onboard the Falcon 9 Transporter mission in June 2024.
+					PocketQube satellite (Falcon 9 Transporter mission); web & mobile applications.
 				</h2>
 			</div>
 		</div>
