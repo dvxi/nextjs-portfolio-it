@@ -1,0 +1,29 @@
+---
+title: AI-Powered Regulatory Whitepaper Assistant — European NGO & Crypto Alliance
+description: RAG for regulatory whitepapers: upload PDFs → parse, chunk, embed → OpenSearch (user isolation), S3; per-field generation with guidelines; Auth0; multi-type whitepapers; FastAPI, React, AWS.
+date: "2024-08-01"
+published: true
+cType: ai
+---
+
+Secure, production-ready application for a client in the regulated financial sector (European scientific foundation and crypto industry alliance) that helps teams prepare structured regulatory disclosures (whitepapers) using retrieval-augmented generation (RAG), with strict user isolation and integration with official registries.
+
+## Business Purpose
+
+The system automates first drafts from uploaded source documents (e.g. PDFs) so experts focus on review and refinement; enforces consistency with field-level guidelines and reporting standards; and integrates official data via lookups (e.g. Legal Entity Identifier and token/asset classification registries) so users get validated references without leaving the tool. The result is a single, auditable workflow: upload → generate → review → edit, with support for multiple whitepaper types and follow-up refinement.
+
+## Technical Pipeline
+
+- **Ingest:** Users upload PDFs; documents are parsed (Docling), chunked with a token-aware strategy (TikToken), and embedded (OpenAI).
+- **Store:** Text chunks and embeddings in a vector-capable search engine (AWS OpenSearch) with strict user isolation—every query and document scoped to the authenticated user. Files in object storage (AWS S3) under user-specific paths.
+- **Generate:** For each form field, the system retrieves relevant chunks, combines them with field-specific guidelines and prompts, and calls an LLM to produce suggested content. Generation runs asynchronously with status polling and cancellation.
+- **Multi-type support:** Backend routes to different schemas and guidelines depending on whitepaper type (e.g. asset-referenced, e-money, or other token classifications), using SQLite and JSON configs for structure and prompts.
+- **Security:** Auth0 (JWT, RS256); API validates tokens on every request; React SPA with protected routes and secure API calls.
+
+## Challenges
+
+Document complexity (parsing and chunking long PDFs so the right context reaches each field); regulatory alignment (structured prompts, guideline injection, evaluation metrics for relevancy, faithfulness, hallucination); user isolation and migration (tenant isolation at S3, OpenSearch, and app DB; safe migration to user-scoped model); latency and UX (async jobs, progress, cancellation); external registries (clear API boundaries, error handling, optional caching).
+
+## Outcome
+
+Teams draft regulatory whitepapers faster and with more consistent adherence to guidelines. Manual lookups are reduced; reviewers spend less time on initial drafting and more on validation and refinement. The workflow is scalable (async, stateless backend, user-scoped data) and auditable (logs, user isolation, clear progression). Production-ready security and ops: Auth0 SSO, JWT validation, HTTPS, rate limiting, security headers, structured logging, health endpoints. Stack: React, React Router, Auth0 React SDK, Tailwind, React-PDF; FastAPI, PyJWT, SQLite, Pydantic; OpenAI, AWS OpenSearch; Docling, TikToken; Docker, Nginx, AWS (S3, OpenSearch).

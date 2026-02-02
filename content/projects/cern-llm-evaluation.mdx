@@ -1,0 +1,30 @@
+---
+title: LLM Evaluation Platform at CERN
+description: Production-ready evaluation platform for LLM and RAG systems: answer quality and context retrieval metrics, LLM-as-a-Judge, dashboard; optional fully local deployment; ~30% improvement for domain-specific RAG.
+date: "2024-09-01"
+published: true
+cType: ai
+---
+
+Production-ready evaluation platform for large language model (LLM) and retrieval-augmented generation (RAG) systems at CERN. The application enables objective, repeatable, and scalable assessment of AI answer quality and context retrieval performance, especially in knowledge-intensive and domain-specific environments.
+
+## Business Goal
+
+The primary business objective was to enable trustworthy adoption of LLM-based systems, provide measurable quality guarantees for AI outputs, support data-privacy-first deployments (including fully local setups), and allow stakeholders to compare models, configurations, and architectures using objective metrics. The platform acts as a decision-support layer, helping teams choose models, tune RAG pipelines, and validate AI readiness before production rollout.
+
+## Solution
+
+- **Answer quality metrics**: Correctness (semantic and factual similarity), relevancy to the original question, completeness and coherence.
+- **Context retrieval effectiveness**: Semantic similarity of retrieved documents, contextual recall and precision, URL and source overlap analysis.
+- **LLM-as-a-Judge evaluation**: Automated scoring aligned with human-judgment benchmarks; consistent, explainable scoring pipelines.
+- **Evaluation dashboard**: Model-to-model comparisons, distribution histograms and variance analysis, performance vs. latency insights, domain-specific performance breakdowns.
+- **Technical**: Evaluates answer quality and context retrieval; supports multiple models and configurations; operates entirely locally when required for full data confidentiality.
+
+## Results and Impact
+
+- Up to **~30% improvement in answer quality** for domain-specific queries when using RAG.
+- Reduced hallucination risk through higher relevancy and tighter score distributions.
+- Enabled data-sovereign AI deployments without sacrificing quality.
+- Provided a repeatable evaluation framework usable across teams and projects.
+
+The platform is fully operational, supporting single-prompt and batch evaluations, running in a self-contained local environment with structured logging and persistent storage. It demonstrates the ability to translate AI research concepts into production systems and build trust layers for reliable, explainable, and auditable AI adoption.

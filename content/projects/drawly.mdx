@@ -1,6 +1,6 @@
 ---
 title: Drawly
-description: Mobile application built using React Native and Expo, allowing users to connect to a selected 3D printer on their local network via WiFi. Users can quickly print their drawings made on the mobile app using the connected 3D printer. The mechanical part of the project resulted in ability to print in chocolate.
+description: React Native + Expo app: connect to a 3D printer over WiFi, draw on device, print in chocolate. Raspberry Pi + Python backend; ŚFN 2022 showcase.
 date: "2022-12-01"
 repository: dvxi/Drawly
 published: true
@@ -9,41 +9,21 @@ cType: app
 
 ![](/drawly.png)
 
-Drawly is a mobile application built using React Native and Expo, designed to connect users to a selected 3D printer on their local network via WiFi. With Drawly, users can unleash their creativity by quickly modifying 2D drawings on their mobile devices and then printing them in delicious chocolate using the connected 3D printer. The app provides an intuitive interface, incorporating features such as redo and undo functionality, a progress tracker, and a queue system to manage multiple printing jobs efficiently.
+Mobile app (React Native, Expo) for the ŚFN (Science Festival in Katowice) 2022: users connect to a 3D printer on the local WiFi, draw on the device, and print in chocolate. Backend: Raspberry Pi with Python server scripts; Azure for connectivity. State and UI: axios, redux, zustand, skia, react-native-navigation.
 
 ## Features
 
-- Connect to a selected 3D printer from the local network using WiFi.
-- Create and modify 2D drawings directly on the Drawly mobile app.
-- Send the modified drawings to the connected 3D printer for printing in chocolate.
-- Track the progress of the printing job with a visual progress tracker.
-- Manage multiple printing jobs using a convenient queue system.
-- Utilize redo and undo functionality to make precise adjustments to the drawings.
+- WiFi discovery and connection to a 3D printer on the local network.
+- In-app 2D drawing with redo/undo; Skia for rendering.
+- Send jobs to the printer; progress tracker and queue for multiple jobs.
+- Chocolate-printing pipeline (mechanical part of the project).
 
 ![](/drawly-event.jpg)
 
-## Purpose and Process
+## Stack and Setup
 
-Drawly was initially developed for the ŚFN (Science Festival in Katowice) 2022 edition as an innovative showcase at the intersection of technology, art, and gastronomy. Our aim was to provide attendees with a unique and interactive experience, demonstrating the capabilities of 3D printing using chocolate as a medium. The project was a collaborative effort between myself and a fellow programmer, combining our expertise to create a seamless and enjoyable user experience.
-
-To ensure smooth communication between the mobile app and the 3D printer, we integrated a Raspberry Pi into the system. Python server scripts were employed to facilitate the flow of data, while Azure servers enhanced the printing process and ensured reliable connectivity between devices. Leveraging the power of React Native and Expo, we crafted an intuitive interface that enables users to unleash their creativity and bring their designs to life.
-
-The incorporation of libraries such as axios, redux, zustand, skia, react native, babel, and react native navigation contributed to the robustness and performance of the Drawly app. These libraries allowed us to seamlessly manage global and local states, render high-quality 2D drawings using skia, and implement smooth navigation within the app.
-
-Drawly invites users to explore the world of 3D printing and chocolate artistry, offering a delightful and engaging experience. With its intuitive interface, powerful features, and seamless integration, Drawly empowers users to transform their 2D drawings into delectable chocolate creations.
+- **Frontend**: React Native, Expo; Skia for canvas; global/local state with Redux and Zustand.
+- **Backend**: Raspberry Pi running Python scripts; Azure for reliable device–server communication.
+- **Run locally**: `git clone https://github.com/dvxi/Drawly.git`, then `npm install` and `npm start`; use Expo Go to scan the QR code. Requires WiFi and a compatible 3D printer on the network.
 
 ![](/drawly-app.gif)
-
-## Getting Started
-
-To get started with Drawly, follow these steps:
-
-1. Clone the Drawly repository: `git clone https://github.com/dvxi/Drawly.git`
-2. Install the necessary dependencies: `npm install` or `yarn install`
-3. Start the development server: `npm start` or `yarn start`
-4. Scan the displayed QR code using the Expo app on your mobile device.
-5. Once connected, you can begin creating and modifying your 2D drawings, and then print them in chocolate using the connected 3D printer!
-
-Please note that Drawly requires an active WiFi connection and a compatible 3D printer on the local network for full functionality.
-
-We welcome contributions from the community! If you encounter any issues or have ideas for new features, please submit bug reports, feature requests, or pull requests. Enjoy the creative journey with Drawly!

@@ -1,67 +1,25 @@
 ---
-title: Crater Detection System Project for Space Exploration
-description: The Crater Detection System integrates a PyTorch-based machine learning model on a Raspberry Pi Pico for efficient crater detection, significantly reducing network load for space exploration. Coupled with a dynamic React web application, it showcases real-time, filtered footage of detected craters, demonstrating cutting-edge applications of machine learning in edge devices.
+title: Crater Detection for Space Exploration (Edge ML)
+description: PyTorch object detection on Raspberry Pi Pico (Pico4ML); React + Node.js app for real-time filtered crater footage; reduces network load for remote ops.
 date: "2024-01-02"
 repository: dvxi/ml-streaming-service-react
 published: true
 cType: app
 ---
 
-# Crater Detection System Project for Space Exploration
+# Crater Detection for Space Exploration
 
-## Project Context
+Proof-of-work from the elective "Machine Learning in Robotics and Edge Devices for Space Exploration": a camera system that runs crater detection on-device to cut network load. Custom object-detection model on Raspberry Pi Pico; React web app for real-time filtered footage.
 
-As part of an elective subject called "Machine Learning in Robotics and Edge Devices for Space Exploration," our team embarked on developing a highly efficient camera system aimed at crater detection to minimize network load. This proof-of-work project harnesses the power of custom object detection machine learning models, installed on a Raspberry Pi Pico, and integrates with a custom web application for real-time filtered footage visualization.
+## Stack
 
-## Technical Stack
-
-- **Machine Learning**: Leveraged Google Colab for collaborative coding and model training, PyTorch for building the object detection model, and Numpy for handling numerical operations.
-- **Web Application**: Developed using React for the frontend, Node.js for the backend, and Tailwind.css for styling, ensuring a responsive and user-friendly interface.
-- **Embedded Development**: Utilized TinyML for deploying machine learning models on low-power devices and Pico4ML for specifically targeting the Raspberry Pi Pico platform.
-
-## System Overview
-
-### Machine Learning Model
-
-The core of the project is a custom object detection model, trained to identify craters from camera feed data. Using Google Colab, PyTorch, and Numpy, the model was developed, trained, and successfully tested before being pruned to decrease its size for efficient deployment on the Raspberry Pi Pico. This optimization was crucial for running the model in edge devices with limited computing resources.
+- **ML**: PyTorch, Numpy; training in Google Colab; model pruned for Pico deployment.
+- **Edge**: Raspberry Pi Pico, Pico4ML, TinyML; Python script for serial camera data → BMP (Pillow), date/time-based directories.
+- **Web**: React, Node.js, Tailwind; fetches and displays filtered images; CORS and refresh tuned for real-time feed without overload.
 
 [![](/ml-1.png)](https://github.com/OmegaCreations/RaspberryPico-ML-for-data-transfer-filtering)
-
-### Embedded Implementation
-
-The Raspberry Pi Pico, equipped with Pico4ML, runs the optimized machine learning model to process live camera feeds directly on the device. The system captures images, which are then processed by the model to detect and filter only the footage containing the desired shapes (craters).
-
-### Data Handling and Image Processing
-
-A Python script, running on the Raspberry Pi Pico, handles serial communication to receive image data. This script:
-
-1. Reads data from the camera through a serial connection.
-2. Processes the data to create BMP images, storing them in dynamically created directories based on the current date and time for organized storage and easy retrieval.
-3. Utilizes the Pillow library to convert raw image data into BMP format, allowing for compatibility with the web application for display.
-
-### Web Application
-
-The web application displays live, filtered footage of detected craters to users. It was developed using React, Node.js, and Tailwind.css, creating a responsive and interactive interface. The application fetches the processed images stored by the Python script and displays them in real-time.
-
 [![](/ml-2.png)](https://github.com/OmegaCreations/RaspberryPico-ML-for-data-transfer-filtering)
 
-### Challenges and Solutions
+## Outcome
 
-- **CORS Issues**: Encountered during the development of the web application, resolved by configuring appropriate headers in the Node.js backend to allow cross-origin requests.
-- **Optimal Refreshing**: Implementing efficient mechanisms in the web application to refresh the feed of locally stored files, ensuring real-time updates without overloading the server or client browser.
-
-### Project Significance
-
-This project demonstrates the feasibility of deploying machine learning models on edge devices for critical applications like crater detection in space exploration. By processing data directly on the device and only transmitting relevant information, we significantly decrease the network load, making the system more viable for remote operations where bandwidth is a precious commodity.
-
-### Future Work
-
-The successful deployment of this project opens avenues for further research and development, including:
-
-- Enhancing the model's accuracy and efficiency through advanced machine learning techniques.
-- Expanding the system's capabilities to detect other relevant features in the exploration domain.
-- Improving the web application's functionality to include features like real-time alerts and detailed analytics.
-
-### Acknowledgments
-
-This project was made possible by the collaborative efforts of our team, the guidance of our instructors, and the resources provided by the elective course on Machine Learning in Robotics and Edge Devices for Space Exploration.
+Only crater-positive frames are stored and sent; bandwidth is reduced for scenarios where uplink is limited. Demonstrates viable edge ML for space-exploration use cases.

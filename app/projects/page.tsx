@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { allProjects } from "contentlayer/generated";
+import { allProjects } from "@/.contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
@@ -38,15 +38,13 @@ export default async function ProjectsPage() {
 				new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
 				new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
 		);
-	sorted.forEach(element => {
-		console.log("typ: " + element.cType + "\n");
-	});
 
-	const gameSorted = sorted.filter((p) => p.cType == "game");
-	const seoEcomm = sorted.filter((p) => (p.cType == "seo" || p.cType == "ecomm"));
-	const webdevSorted = sorted.filter((p) => p.cType == "webdev");
-	const appSorted = sorted.filter((p) => p.cType == "app");
-	const uiuxSorted = sorted.filter((p) => p.cType == "uiux");
+	const aiSorted = sorted.filter((p) => p.cType === "ai");
+	const gameSorted = sorted.filter((p) => p.cType === "game");
+	const seoEcomm = sorted.filter((p) => (p.cType === "seo" || p.cType === "ecomm"));
+	const webdevSorted = sorted.filter((p) => p.cType === "webdev");
+	const appSorted = sorted.filter((p) => p.cType === "app");
+	const uiuxSorted = sorted.filter((p) => p.cType === "uiux");
 
 	return (
 		<div className="relative pb-16">
@@ -113,6 +111,16 @@ export default async function ProjectsPage() {
 					</div>
 				</div> */}
 				<div className="hidden w-full h-px md:block bg-zinc-800" />
+
+				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">AI & LLM</h3>
+
+				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
+					{aiSorted.map((project) => (
+						<Card key={project.slug}>
+							<Article project={project} views={views[project.slug] ?? 0} />
+						</Card>
+					))}
+				</div>
 
 				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">App Development</h3>
 

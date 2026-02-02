@@ -1,0 +1,33 @@
+---
+title: RAG System for GSI Helmholtzzentrum Logbook (Thesis)
+description: Full-stack RAG for particle physics logbook: Next.js 14, PostgreSQL, Pinecone, OpenAI; semantic search + AI Q&A with citations; three modes (semantic, AI, keyword); Precision@5 +60%; thesis at GSI Darmstadt.
+date: "2024-06-01"
+published: true
+cType: ai
+---
+
+Full-stack web application for GSI Helmholtzzentrum für Schwerionenforschung in Darmstadt that transforms thousands of logbook entries—accumulated over years of complex equipment testing—into an intelligent, searchable knowledge base. Built as a bachelor's thesis in Applied Computer Science; role: full-stack development, system architecture, ML pipeline design.
+
+## The Challenge
+
+Traditional keyword-based search fails when terminology varies, synonyms differ ("cooldown procedure" vs "cryogenic preparation"), and answers require synthesising information scattered across multiple entries. The result: hours lost searching archives, knowledge loss during personnel transitions, repeated mistakes, and delayed decision-making. The system addresses these by combining vector-based semantic search with large language models (RAG).
+
+## Solution and Architecture
+
+- **RAG pipeline**: User query → embedding → vector search → context retrieval → LLM generation → cited answer. Answers are grounded in actual logbook content, traceable to source entries, and constrained to minimise hallucination.
+- **Three search modes**: Semantic search (find by meaning); AI Q&A with citations (natural-language questions, synthesised answers with source references); Smart Search (vector similarity without LLM generation for faster browsing). **Graceful degradation**: falls back to keyword search when AI services are unavailable.
+- **Multi-dimensional filtering**: By category, author, date range, test object, and more. **User-defined context**: Attach specific entries to constrain AI responses to selected sources.
+
+## Tech Stack
+
+Next.js 14, React, TypeScript, PostgreSQL (Drizzle ORM), Pinecone (vector store), OpenAI (embeddings and LLM), Tailwind CSS, shadcn/ui, TanStack Query. Provider abstraction allows swapping OpenAI for local models (e.g. Ollama) or alternative providers. Batch ingestion with idempotency for safe re-runs and incremental updates.
+
+## Results and Metrics
+
+- **Search quality**: Precision@5 +60%, Recall@5 +31%, MRR +40% vs keyword search.
+- **Performance**: Total RAG pipeline ~1.7s average, ~3.4s P95; query embedding, vector search, and DB fetch in the tens to low hundreds of ms; LLM generation dominates latency.
+- **Scale**: Tested with 100,000+ entries; horizontal scaling via Pinecone serverless; incremental indexing.
+
+## Thesis Scope and Future
+
+The thesis covers RAG foundations, system design and implementation, and evaluation of search quality and generated responses. Challenges addressed include domain-specific terminology (enriched document representation with metadata), long-document handling (truncation with preserved headers), and service reliability (graceful fallback). Future directions: local LLM integration (Ollama), real-time sync, custom embeddings, anomaly detection.

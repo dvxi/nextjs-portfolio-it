@@ -1,0 +1,38 @@
+---
+title: Conversational Analytics POC — Global Beauty Conglomerate
+description: Self-service conversational analytics (NL → SQL → answer + charts) for a leading global enterprise in a regulated sector; LangGraph multi-agent pipeline; FastAPI + Next.js; SQLite/PostgreSQL.
+date: "2024-07-01"
+published: true
+cType: ai
+---
+
+AI-powered business intelligence assistant delivered for a leading global enterprise (global beauty conglomerate) in a regulated sector. The goal was self-service analytics: non-technical users ask questions in natural language and receive instant answers with charts, reducing dependency on IT and shortening time-to-insight.
+
+## Purpose and Goals
+
+- **Business:** Give non-technical users direct access to enterprise data without writing reports or waiting on IT; self-service analytics with natural-language questions and instant answers with charts.
+- **Technical:** End-to-end conversational analytics platform: natural-language question → intent routing → SQL generation and execution → formatted answer with optional auto-selected visualisations. Conversation history and optional external context; configurable via the client's environment.
+
+## Challenges
+
+- **Semantic–database alignment:** Mapping casual user phrasing to canonical values required context-aware entity resolution; step-based categorical matching so intent maps to the right columns and values.
+- **SQL reliability:** Safe, correct SQL across complex schemas with strict escaping, validation, and clear fallbacks when generation failed.
+- **Concurrency and UX:** Async request manager with configurable timeouts, queue limits, and request cancellation by ID.
+- **Multi-backend support:** Same pipeline for SQLite (development/demos) and PostgreSQL (including managed cloud), with health checks and consistent connection handling.
+- **Pipeline complexity:** Coordinating multiple agents (router, clarification, SQL generation/execution, analysis) with a clear state model and consistent error handling.
+- **Deployment:** Docker to cloud with secrets management, environment-based configuration, and correct frontend–backend networking.
+
+## Deliverables
+
+- **Conversational analytics:** Full flow from natural-language question to text answer and optional visualisation; line, bar, horizontal bar, scatter, and pie charts with automatic chart-type selection and short reasoning explanation.
+- **Multi-agent architecture:** LangGraph-based pipeline with routing, clarification, SQL generation and execution, and analysis agents; streaming where applicable.
+- **Backend:** FastAPI with async request manager (semaphore, queue, configurable timeout, cancel-by-UUID), Bearer-token auth (Auth0-ready), CORS, health checks for API and database.
+- **Frontend:** Next.js chat application with conversation history, saved and preset questions, internationalisation (EN, PL, FR), theme support, responsive layout.
+- **Data and deployment:** SQLite and PostgreSQL for analytics; SQLite for chat persistence; Docker Compose and cloud deployment with parameterised configuration.
+- **Quality:** Evaluation datasets and test suites for agents and API (integration, cancellation, negative paths); structured architecture documentation.
+
+## Outcome
+
+Working proof of concept demonstrating feasible, secure, natural-language access to analytics; foundation for scaling to more users and data sources and for faster time-to-insight. Reusable patterns: request queue, multi-agent graph, categorical matching, visualisation pipeline; clear path from POC to production.
+
+The same platform was later delivered for a post-lease automotive trading client (see Post-Lease Automotive Platform).

@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "fmt": "pnpm rome check . --apply-suggested && pnpm rome format . --write"
+    "fmt": "pnpm rome check . --apply-suggested && pnpm rome format . --write",
+    "lint": "rome check .",
+    "typecheck": "tsc --noEmit",
+    "precommit": "pnpm run lint && pnpm run build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@next/font": "^13.4.3",
@@ -26,9 +30,23 @@
     "react-wrap-balancer": "^0.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.4",
+    "shiki": "^1.29.2",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "typescript": "5.0.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,mdx}": [
+      "rome format --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "rome check --apply"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+      "shiki": "^1.29.2"
+    }
   },
   "devDependencies": {
     "@opentelemetry/api": "^1.4.1",
@@ -39,6 +57,8 @@
     "postcss-nesting": "^11.2.2",
     "rome": "^11.0.0",
     "tailwindcss": "^3.2.7",
-    "tailwindcss-debug-screens": "^2.2.1"
+    "tailwindcss-debug-screens": "^2.2.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.0"
   }
 }

@@ -6,10 +6,10 @@ import {
 	useSpring,
 } from "framer-motion";
 
-import { MouseEventHandler, PropsWithChildren, useRef, useLayoutEffect } from "react";
+import { PropsWithChildren, useRef, useLayoutEffect } from "react";
 
 export const Card: React.FC<PropsWithChildren> = ({ children }) => {
-	const ref = useRef<any>(null);
+	const ref = useRef<HTMLDivElement>(null);
 
 	const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
 	const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
@@ -21,7 +21,11 @@ export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 		mouseY.set(height);	
 	}, []);
 
-	function onMouseMove({ currentTarget, clientX, clientY }: any) {
+	function onMouseMove({
+		currentTarget,
+		clientX,
+		clientY,
+	}: React.MouseEvent<HTMLDivElement>) {
 		const { left, top } = currentTarget.getBoundingClientRect();
 		mouseX.set(clientX - left);
 		mouseY.set(clientY - top);
