@@ -40,11 +40,6 @@ export default async function ProjectsPage() {
 		);
 
 	const aiSorted = sorted.filter((p) => p.cType === "ai");
-	const gameSorted = sorted.filter((p) => p.cType === "game");
-	const seoEcomm = sorted.filter((p) => (p.cType === "seo" || p.cType === "ecomm"));
-	const webdevSorted = sorted.filter((p) => p.cType === "webdev");
-	const appSorted = sorted.filter((p) => p.cType === "app");
-	const uiuxSorted = sorted.filter((p) => p.cType === "uiux");
 
 	return (
 		<div className="relative pb-16">
@@ -122,60 +117,6 @@ export default async function ProjectsPage() {
 					))}
 				</div>
 
-				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">App Development</h3>
-
-				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-					{appSorted
-						.map((project) => (
-							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
-							</Card>
-						))}
-				</div>
-
-				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">UI/UX Design</h3>
-
-				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-					{uiuxSorted
-						.map((project) => (
-							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
-							</Card>
-						))}
-				</div>
-
-				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">Game Development</h3>
-
-				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-					{gameSorted
-						.map((project) => (
-							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
-							</Card>
-						))}
-				</div>
-
-				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">SEO / E-commerce</h3>
-				
-				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-					{seoEcomm
-						.map((project) => (
-							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
-							</Card>
-						))}
-				</div>
-
-				<h3 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">Web development</h3>
-
-				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-					{webdevSorted
-						.map((project) => (
-							<Card key={project.slug}>
-								<Article project={project} views={views[project.slug] ?? 0} />
-							</Card>
-						))}
-				</div>
 			</div>
 		</div>
 	);

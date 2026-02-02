@@ -6,21 +6,25 @@ published: true
 cType: ai
 ---
 
-Internal conversational assistant for a global quick-service restaurant brand, enabling staff to navigate procedures, terminology, and documents via natural-language questions and cited answers. The system serves a large workforce and consolidates access to internal knowledge (procedures, glossaries, policy documents) and the company intranet.
+Internal conversational assistant for a global quick-service restaurant brand (~36k staff). Staff navigate procedures, terminology, and documents via natural-language questions and cited answers; the system consolidates access to internal knowledge (procedures, glossaries, policy documents) and the company intranet.
 
 ## Purpose
 
-- **Business**: Give staff instant, grounded answers from internal knowledge; reduce time spent searching and standardise access to company terminology and policies; support multiple languages (e.g. PL, EN, UK) for diverse, multilingual teams.
-- **Technical**: Conversational AI over enterprise content with cited sources (RAG-style, managed AI/search service); persistent chat history, saved questions, and a searchable glossary backed by a cloud database and REST APIs; PWA for mobile-first, installable use in the field; authentication (identity provider) and backend auth (e.g. cloud API gateway) so only authorised users access the app and APIs.
+- **Business:** Instant, grounded answers from internal knowledge; standardise access to company terminology and policies; support multiple languages (PL, EN, UK) for diverse, multilingual teams.
+- **Technical:** Conversational AI over enterprise content with cited sources (RAG-style, managed AI/search); persistent chat history, saved questions, searchable glossary backed by cloud database and REST APIs; PWA for mobile-first, installable use in the field; authentication (identity provider) and backend auth so only authorised users access the app and APIs.
 
 ## Stack
 
-Cloud-native backend (FastAPI, managed SQL such as Cloud SQL), managed AI/search services, React/Next.js front end, TypeScript, Chakra UI. Backend deployed on Cloud Run; front end responsive, PWA, multi-language, accessible (ARIA, keyboard navigation).
+- **Backend:** FastAPI, managed SQL (e.g. Cloud SQL), managed AI/search services; deployed on Cloud Run.
+- **Frontend:** React/Next.js, TypeScript, Chakra UI; responsive, PWA, multi-language, accessible (ARIA, keyboard navigation).
 
 ## Challenges
 
-Integrating conversational AI with existing auth, session handling, and UI (chat, history, ratings) so that answers, sources, and feedback flow correctly end-to-end; unifying multiple content types (glossary, documents, procedures) into one search/answer experience with reliable citations; mobile UX (performance, scroll behaviour, perceived speed); data model and API design for saved questions, chat history, and ratings with consistent error handling; i18n and brand/UX guidelines.
+- Integrating conversational AI with existing auth, session handling, and UI (chat, history, ratings) so answers, sources, and feedback flow correctly end-to-end.
+- Unifying multiple content types (glossary, documents, procedures) into one search/answer experience with reliable citations.
+- Mobile UX: performance, scroll behaviour, perceived speed; data model and API design for saved questions, chat history, and ratings with consistent error handling.
+- i18n and brand/UX guidelines.
 
 ## Outcome
 
-For users: a single place to ask questions and get answers with sources, reuse saved questions, and look up terminology in their language. For the organisation: standardised access to policies and terminology; auditable usage via chat history and ratings; scalable cloud deployment. The project demonstrates a full-cycle build of an internal AI assistant for a large QSR brand, from design and integration to deployment and UX refinement.
+For users: a single place to ask questions and get answers with sources, reuse saved questions, and look up terminology in their language. For the organisation: standardised access to policies and terminology; auditable usage via chat history and ratings; scalable cloud deployment. Full-cycle build of an internal AI assistant for a large QSR brand, from design and integration to deployment and UX refinement.
